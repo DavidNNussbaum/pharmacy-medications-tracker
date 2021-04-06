@@ -58,6 +58,8 @@ private
           :username,
           :password_digest,
           :code,
+          :email,
+          :uid
         ],
         medications_attributes: [
             :name,
