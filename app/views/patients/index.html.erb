@@ -1,0 +1,7 @@
+<div>
+  <% @patients.each do |patient| %>
+    <div><%= link_to partient.name, patient_path(patient) %> 
+    <%= patient.age %>
+</div> 
+  <% end %>
+</div>
