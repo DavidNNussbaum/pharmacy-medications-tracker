@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :pharmacies do
+    resources :managers, only: [:index, :show]
+  end
   resources :managers
-  resources :pharmacies
-   
   resources :medications do
     resources :patients, only: [:index, :show]
   end

@@ -1,0 +1,18 @@
+<%= form_for(@manager) do |f| %>
+
+  <label>Manager Username:</label><br>
+  <%= f.text_field :username %><br>
+
+  <label>Manager Password</label><br>
+  <%= f.text_field :password %><br>
+
+  <label>Code</label><br>
+  <%= f.text_field :code %><br>
+
+  <label>Pharmacy</label><br>
+  <%= f.integer_field :pharmacy_id %><br>
+ 
+  <%= f.submit %>
+<% end %>
+</form>
+  
