@@ -1,0 +1,26 @@
+<%= form_for(@patient) do |f| %>
+
+  <label>Party Name:</label><br>
+  <%= f.text_field :name %><br>
+
+  <label>Party Date</label><br>
+  <%= f.text_field :date_time %><br>
+
+  <label>Party Budget</label><br>
+  <%= f.text_field :budget %><br>
+
+  <label>Party Status</label><br>
+    
+  <%= f.select :private, options_for_select([ "true", "false"], selected: @party.private), include_blank: "Select Visibility"%><br>
+
+<label>Party Category:</label><br>
+    <%= f.collection_check_boxes :category_id, Category.all, :id, :name %><br>
+    <%= f.fields_for :category, @party.build_category do |categories_fields| %>
+    <%= categories_fields.label :name, "Create A New Category:" %><br>
+    <%= categories_fields.text_field :name %><br>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
+</form>
+  

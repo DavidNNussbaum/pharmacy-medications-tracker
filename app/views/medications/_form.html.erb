@@ -2,23 +2,10 @@
 
   <label>Medication Name-Strength:</label><br>
   <%= f.collection_check_boxes :medication_id, Medication.all, :id, :name %><br>
+  <%= f.fields_for :medication, @medication.build_medication do |medicationss_fields| %>
     <%= medications_fields.label :name, "Create A New Medication-Strength:" %><br>
-    <%= categories_fields.text_field :name %><br>
+    <%= medications_fields.text_field :name %><br>
   <% end %>
-  <%= f.text_field :name %><br>
-
-  <label>Quantity</label><br>
-  <%= f.text_field :quantity %><br>
-
-    <%= f.fields_for :patients do |patient| %>
-      <%= patient.label :name %>
-      <%= patient.text_field :name %><br>
-  
-      <%= patient.label :age %>
-      <%= patient.text_field :age %><br>
-  
-    <% end %>
-  
     <%= f.submit %>
   <% end %> 
 

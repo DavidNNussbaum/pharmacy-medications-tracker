@@ -61,6 +61,10 @@ private
         medications_attributes: [
             :name,
             :quantity
+          ],
+          patients_attributes: [
+            :name,
+            :age
           ]
       )
   

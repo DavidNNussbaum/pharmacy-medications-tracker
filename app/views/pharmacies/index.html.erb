@@ -1,0 +1,6 @@
+<div>
+  <% @pharmacies.each do |pharmacy| %>
+    <div><%= link_to pharmacy.name, pharmacy_path(pharmacy) %> 
+</div> 
+  <% end %>
+</div>
