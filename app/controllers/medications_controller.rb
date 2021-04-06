@@ -51,6 +51,14 @@ private
   end
   
     def medication_params
-      params.require(:medication).permit!
+      params.require(:medication).permit(
+        :name,
+        :quantity,
+        patients_attributes: [
+          :name,
+          :age
+        ]
+      )
+  
     end
 end

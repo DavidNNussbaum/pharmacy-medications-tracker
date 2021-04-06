@@ -51,6 +51,18 @@ private
   end
   
     def pharmacy_params
-      params.require(:pharmacy).permit!
+      params.require(:pharmacy).permit(
+        :name, :medication_id, :patient_id,
+        managers_attributes: [
+          :username,
+          :password_digest,
+          :code,
+        ],
+        medications_attributes: [
+            :name,
+            :quantity
+          ]
+      )
+  
     end
 end
