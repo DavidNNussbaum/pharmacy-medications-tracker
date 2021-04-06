@@ -7,11 +7,11 @@ class ManagersController < ApplicationController
      end
 
     def show
-         
+        find_manager
     end
   
     def new
-      @manager = Manager.new
+      @manager
    
     end
   
@@ -21,11 +21,13 @@ class ManagersController < ApplicationController
   
     def create
       @manager = Manager.new(manager_params)
-      if @party.save
-            redirect_to @manager 
-        else  
-            render :new
-        end
+      if @user.id
+        session[:manager_id] = @manager.id
+        redirect_to @manager
+             
+      else  
+        render :new
+      end
     end
   
     def update
