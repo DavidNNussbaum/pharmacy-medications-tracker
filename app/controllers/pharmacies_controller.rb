@@ -1,5 +1,6 @@
 class PharmaciesController < ApplicationController
     before_action :find_pharmacy, only: [:show, :edit, :update, :destroy]
+    before_action :redirect_if_not_logged_in
 
      def index
        @pharmacies = Pharmacy.all.order('name')
