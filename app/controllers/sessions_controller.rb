@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     def omniauth
       @user = User.from_omniauth(auth)
       if @manager.valid?
-        session[:manager_id] = @user.id
+        session[:manager_id] = @userprojects.id
         redirect_to @manager
       else
         render :new
