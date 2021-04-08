@@ -9,9 +9,12 @@
   <label>Code</label><br>
   <%= f.text_field :code %><br>
 
-  <label>Pharmacy</label><br>
-  <%= f.integer_field :pharmacy_id %><br>
- 
+  <%= f.fields_for :pharmacies do |pharm| %>
+      <%= pharm.collection_check_boxes :pharmacy_id, Pharmacy.all, :id, :name %><br>
+      <%= pharm.fields_for :pharmacy, @pharmacy.build_pharmacy do |pharmacies_fields| %>
+      <%= pharmacies_fields.label :name, "Enter A New Pharmacy Name:" %><br>
+      <%= pharmacies_fields.text_field :name %><br>
+  <% end %> 
   <%= f.submit %>
 <% end %>
 </form>

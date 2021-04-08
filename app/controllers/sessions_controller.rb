@@ -2,23 +2,23 @@ class SessionsController < ApplicationController
     before_action :redirect_if_logged_in, only: [:new]
   
     def new
-      @manager = Manager.new
+      @user = User.new
     end
   
     def create
-      manager = Manager.find_by_password(params[:user][:password])
-      if manager && manager.authenticate(params[:user][:password])
-        session[:manager_id] = manager.id
-        redirect_to manager
+      user = User.find_by_password(params[:user][:password])
+      if User && user.authenticate(params[:user][:password])
+        session[:user_id] = user.id
+        redirect_to user
       else
         redirect_to '/login', error: "Invalid credentials"
       end
     end
   
     def omniauth
-      @manager = Manager.from_omniauth(auth)
+      @user = User.from_omniauth(auth)
       if @manager.valid?
-        session[:manager_id] = @manager.id
+        session[:manager_id] = @user.id
         redirect_to @manager
       else
         render :new

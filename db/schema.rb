@@ -10,39 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_204027) do
-
-  create_table "managers", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.string "code"
-    t.integer "pharmacy_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "email"
-    t.string "uid"
-  end
+ActiveRecord::Schema.define(version: 2021_04_08_221833) do
 
   create_table "medications", force: :cascade do |t|
-    t.string "name"
-    t.integer "quantity"
+    t.string "name", null: false
+    t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
+    t.string "name", null: false
+    t.datetime "dob", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "pharmacies", force: :cascade do |t|
     t.string "name"
-    t.integer "medication_id"
-    t.integer "patient_id"
+    t.string "address"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_pharmacies_on_user_id"
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.integer "patient_id", null: false
+    t.integer "medication_id", null: false
+    t.integer "pharmacy_id", null: false
+    t.boolean "dispensed", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["medication_id"], name: "index_prescriptions_on_medication_id"
+    t.index ["patient_id"], name: "index_prescriptions_on_patient_id"
+    t.index ["pharmacy_id"], name: "index_prescriptions_on_pharmacy_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
+    t.string "password_digest"
+    t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "prescriptions", "medications"
+  add_foreign_key "prescriptions", "patients"
+  add_foreign_key "prescriptions", "pharmacies"
 end

@@ -4,9 +4,14 @@
   <%= f.text_field :name %><br>
 
   <label>Patient Age</label><br>
-  <%= f.text_field :patient %><br>
+  <%= f.text_field :age %><br>
 
-
+  <%= f.fields_for :pharmacies do |pharm| %>
+      <%= pharm.collection_check_boxes :pharmacy_id, Pharmacy.all, :id, :name %><br>
+      <%= pharm.fields_for :pharmacy, @pharmacy.build_pharmacy do |pharmacies_fields| %>
+      <%= pharmacies_fields.label :name, "Enter A New Pharmacy Name:" %><br>
+      <%= pharmacies_fields.text_field :name %><br>
+  <% end %>
   <%= f.submit %>
 <% end %>
 </form>

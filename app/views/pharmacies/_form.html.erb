@@ -3,28 +3,7 @@
     <%= f.fields_for :pharmacy, @pharmacy.build_pharmacy do |pharmacies_fields| %>
     <%= pharmacies_fields.label :name, "List A New Pharmacy:" %><br>
     <%= pharmacies_fields.text_field :name %><br>
-  <% end %>
-
-    <%= f.fields_for :patients do |pat| %>
-      <%= pat.collection_check_boxes :patient_id, Patient.all, :id, :name %><br>
-      <%= pat.fields_for :patient, @patient.build_patient do |patients_fields| %>
-      <%= patients_fields.label :name, "Enter A New Patient Name:" %><br>
-      <%= patients_fields.text_field :name %><br>
-      <%= patients_fields.label :age, "Enter A New Patient Age:" %><br>
-      <%= patients_fields.text_field :age %><br>
-       
-      <% end %>
-  
-    <%= f.fields_for :medications do |med| %>
-      <%= med.collection_check_boxes :medication_id, Medication.all, :id, :name %><br>
-      <%= med.fields_for :medication, @medication.build_medication do |medications_fields| %>
-      <%= medications_fields.label :name, "Enter A New Medication-Strength:" %><br>
-      <%= medications_fields.text_field :name %><br>
-      <%= medications_fields.label :quantity, "Enter A Quantity:" %><br>
-      <%= medications_fields.text_field :name %><br>
-       
-      <% end %>
-  
+<% end %>
     <%= f.submit %>
-  <% end %> 
+<% end %> 
   

@@ -1,8 +1,9 @@
 <h1>Medication Status in <%= @pharmacy.name %></h1>
 <div>
-  <% @pharmacy.medications.each do |medication| %>
-    <div><%= link_to medication.name, pharmacy_medications_path(medication) %> 
-    <%= medication.quantity %>
+  <% @pharmacy.medications.each do |med| %>
+    <%= med.name %>
+    <%= med.quantity %>
 </div> 
   <% end %>
 </div>
+WHERE medications.name == med.name on several rows, total count.

@@ -5,9 +5,25 @@
   <%= f.fields_for :medication, @medication.build_medication do |medicationss_fields| %>
     <%= medications_fields.label :name, "Create A New Medication-Strength:" %><br>
     <%= medications_fields.text_field :name %><br>
+
+   <%= f.fields_for :pharmacies do |pharm| %>
+      <%= pharm.collection_check_boxes :pharmacy_id, Pharmacy.all, :id, :name %><br>
+      <%= pharm.fields_for :pharmacy, @pharmacy.build_pharmacy do |pharmacies_fields| %>
+      <%= pharmacies_fields.label :name, "Enter A New Pharmacy Name:" %><br>
+      <%= pharmacies_fields.text_field :name %><br>
+
+    <%= f.fields_for :patients do |pat| %>
+      <%= pat.collection_check_boxes :patient_id, Patient.all, :id, :name %><br>
+      <%= pat.fields_for :patient, @patient.build_patient do |patients_fields| %>
+      <%= patients_fields.label :name, "Enter A New Patient Name:" %><br>
+      <%= patients_fields.text_field :name %><br>
+      <%= patients_fields.label :name, "Enter The New Patient's Age:" %><br>
+      <%= patients_fields.text_field :age %><br>
   <% end %>
     <%= f.submit %>
   <% end %> 
+
+   
 
 
    

@@ -1,6 +1,6 @@
 class MedicationsController < ApplicationController
     before_action :find_medication, only: [:show, :edit, :update, :destroy]
-    before_action :redirect_if_not_logged_in
+    # before_action :redirect_if_not_logged_in
 
      def index
        @medications = Medication.all.order('name')
@@ -12,7 +12,6 @@ class MedicationsController < ApplicationController
   
     def new
       @medication = Medication.new
-   
     end
   
     def edit
@@ -20,17 +19,17 @@ class MedicationsController < ApplicationController
     end
   
     def create
-      @medication = Medication.new(party_params)
+      @medication = Medication.new(medication_params)
       if @medication.save
             redirect_to @medication
         else  
-            render :new
+            render :links
         end
     end
   
     def update
       if @medication.update(medication_params)
-        redirect_to medication_path(@medication)
+        redirect_to :links
       else 
         render :edit
       end
