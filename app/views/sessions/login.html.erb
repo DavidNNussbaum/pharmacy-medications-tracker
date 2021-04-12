@@ -1,13 +1,16 @@
 <div id="login-form">
-    <%= form_with(model: @manager, url: "/login") do |f| %>
+    <%= form_with(model: @user, url: sessions_path, method: :post, local: true) do |f| %>
         <div class="form-control">
-            <%= f.label :username, class: "form-label" , class: "form-label" %>
+            <%= f.label :email, class: "form-label" %>
             <%= f.email_field :email, class: "form-input" %>
         </div>
         <div class="form-control">
-            <%= f.label:password, class: "form-label" , class: "form-label" %>
+            <%= f.label :password, class: "form-label" %>
             <%= f.password_field :password, class: "form-input" %>
         </div>
-        <%= f.submit :signin%>
+       
+          <%= label_tag :code %><br>
+          <%= text_field_tag :code %><br>
+        <%= f.submit :login %>
     <% end %>
  </div>

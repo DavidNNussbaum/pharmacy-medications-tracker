@@ -52,6 +52,6 @@ private
   end
   
     def patient_params
-      params.require(:patient).permit!
+      params.require(:patient).permit(:first_name, :last_name, :dob, :address )
     end
 end

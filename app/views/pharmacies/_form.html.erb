@@ -1,9 +1,10 @@
 <%= form_for @pharmacy do |f| %>
-    <%= f.collection_check_boxes :pharmacy_id, Pharmacy.all, :id, :name %><br>
-    <%= f.fields_for :pharmacy, @pharmacy.build_pharmacy do |pharmacies_fields| %>
-    <%= pharmacies_fields.label :name, "List A New Pharmacy:" %><br>
-    <%= pharmacies_fields.text_field :name %><br>
-<% end %>
+    <%= f.label :name, "List A New Pharmacy:" %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label :address, "New Pharmacy Address:" %><br>
+    <%= f.text_field :address %><br>
+ 
     <%= f.submit %>
 <% end %> 
-  
+
+ 

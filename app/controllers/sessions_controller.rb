@@ -1,17 +1,24 @@
 class SessionsController < ApplicationController
-    before_action :redirect_if_logged_in, only: [:new]
+    before_action :redirect_if_logged_in, only: [:destroy]
   
     def new
       @user = User.new
+      render :login
     end
-  
+    
     def create
-      user = User.find_by_password(params[:user][:password])
-      if User && user.authenticate(params[:user][:password])
-        session[:user_id] = user.id
-        redirect_to user
+      if params[:code] == TODAYS_CODE
+        user = User.find_by_email(user_params[:email])
+        if user && user.authenticate(user_params[:password])
+          session[:user_id] = user.id
+          redirect_to user
+        else
+          flash[:danger] = 'Invalid Credentials'
+          redirect_to '/login' 
+        end
       else
-        redirect_to '/login', error: "Invalid credentials"
+        flash[:danger] = 'Invalid Code'
+        redirect_to '/login' 
       end
     end
   
@@ -31,7 +38,10 @@ class SessionsController < ApplicationController
     end
   
     private
-  
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      end
     def auth
       request.env['omniauth.auth']
     end

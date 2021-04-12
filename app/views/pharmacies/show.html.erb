@@ -1,9 +1,9 @@
 <h1>Medication Status in <%= @pharmacy.name %></h1>
 <div>
-  <% @pharmacy.medications.each do |med| %>
+  <% @pharmacy.prescriptions.medications.each do |med| %>
     <%= med.name %>
     <%= med.quantity %>
 </div> 
   <% end %>
 </div>
-WHERE medications.name == med.name on several rows, total count.
+WHERE medications.name == med.name on several rows of patients, total count.

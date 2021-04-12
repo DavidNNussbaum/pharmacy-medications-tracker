@@ -1,18 +1,28 @@
 <%= form_for(@patient) do |f| %>
 
-  <label>Patient Name:</label><br>
-  <%= f.text_field :name %><br>
+  <label>Patient First Name:</label><br>
+  <%= f.text_field :first_name %><br>
 
-  <label>Patient Age</label><br>
-  <%= f.text_field :age %><br>
+  <label>Patient First Name</label><br>
+  <%= f.text_field :first_name %><br>
 
+  <label>Patient Last Name</label><br>
+  <%= f.text_field :last_name %><br>
+
+  <label>Patient Date Of Birth (mm/dd/yyyy):</label><br>
+  <%= f.text_field :dob %><br>
+
+  <label>Patient Address</label><br>
+  <%= f.text_field :address %><br>
+   
   <%= f.fields_for :pharmacies do |pharm| %>
-      <%= pharm.collection_check_boxes :pharmacy_id, Pharmacy.all, :id, :name %><br>
-      <%= pharm.fields_for :pharmacy, @pharmacy.build_pharmacy do |pharmacies_fields| %>
-      <%= pharmacies_fields.label :name, "Enter A New Pharmacy Name:" %><br>
-      <%= pharmacies_fields.text_field :name %><br>
+      <%= pharm.collection_check_boxes :name, Pharmacy.all, :id, :name %><br>
+      <%= pharm.label :name, "Enter A New Pharmacy Name:" %><br>
+      <%= pharm.text_field :name %><br>
+      <%= pharm.label :name, "Enter A New Pharmacy Address:" %><br>
+      <%= pharm.text_field :address %><br>
   <% end %>
-  <%= f.submit %>
+  <%= f.submit "Submit This Information"%>
 <% end %>
 </form>
-  
+ 

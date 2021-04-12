@@ -1,8 +1,6 @@
 <div>
   <% @medications.each do |medication| %>
     <div><%= link_to medication.name, medication_path(medication) %> 
-    <%= medication.name %>
-    <%= medication.quantity %>
 </div> 
   <% end %>
 </div>

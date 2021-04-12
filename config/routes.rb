@@ -2,16 +2,20 @@ Rails.application.routes.draw do
   root 'users#welcome'
   get '/signup', to: 'users#new', as: 'signup'
   get '/login', to: 'sessions#new', as: 'login'
-  resources :users, except: [:index, :show]
+  resources :users, except: [:index] 
+  resources :sessions
+
+  resources :patients, only: [:index, :new, :create]  
+  resources :prescriptions, only: [:index, :new, :create]
+  resources :medications, only: [:index, :new, :create]
+
   resources :pharmacies do
-    resources :patients, only: [:index, :show]
-    resources :prescriptions, only: [:index, :show]
-    resources :medications, only: [:index, :show]
+    resources :patients, shallow: true   
+    resources :prescriptions, shallow: true 
+    resources :medications, shallow: true 
   end
 
-  resources :patients, except: [:index, :show]
-  resources :prescriptions, except: [:index, :show]
-  resources :medications, except: [:index, :show]
+  
    
    
   
