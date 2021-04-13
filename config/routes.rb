@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root 'users#welcome'
   get '/signup', to: 'users#new', as: 'signup'
   get '/login', to: 'sessions#new', as: 'login'
+  get '/auth/facebook/callback' => 'sessions#create' 
+  get '/auth/google/callback' => 'sessions#create' 
+  # get '/auth/:provider/callback' => 'sessions#omniauth' 
+  
   resources :users, except: [:index] 
   resources :sessions
 
