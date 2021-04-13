@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    before_action :redirect_if_not_logged_in, only: [:destroy]
+    # before_action :redirect_if_not_logged_in, only: [:destroy]
   
     def new
       @user = User.new

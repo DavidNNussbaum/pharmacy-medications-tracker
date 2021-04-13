@@ -1,9 +1,9 @@
 <h1>Medication Status in <%= @pharmacy.name %></h1>
 <div>
-  <% @pharmacy.prescriptions.medications.each do |med| %>
+  <% @pharmacy.prescriptions.medications.order.each do |med| %>
     <%= med.name %>
-    <%= med.quantity %>
-</div> 
+    <%= med.prescriptions.current_total %>
+
   <% end %>
 </div>
  

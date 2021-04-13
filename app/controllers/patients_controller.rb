@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
     before_action :find_patient, only: [:show, :edit, :update, :destroy]
-    before_action :redirect_if_not_logged_in
+    # before_action :redirect_if_not_logged_in
 
      def index
        @patients = Patient.all.order('name')
@@ -52,6 +52,6 @@ private
   end
   
     def patient_params
-      params.require(:patient).permit(:first_name, :last_name, :dob, :address )
+      params.require(:patient).permit(:first_name, :last_name, :dob, :address,:search )
     end
 end

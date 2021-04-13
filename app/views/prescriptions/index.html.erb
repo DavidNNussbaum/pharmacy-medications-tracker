@@ -1,6 +1,8 @@
 div>
-  <% @prescriptions.pharmacies.medications.organize each do |med| %>
-    <div><%= med.current_total %> 
+  <% @prescriptions.pharmacies.each do |pharm| %>
+    <% pharm.medications.organize each do |med| %>
+     <p> Pharmacy Name: <%= pharm.name %>, Medication Name: <%= med.name %>, Medication Current Amount: <%= med.prescription.current_total %></p><br>
+         Medication Current Total: <%= med.current_total %> 
 </div> 
   <% end %>
 </div>

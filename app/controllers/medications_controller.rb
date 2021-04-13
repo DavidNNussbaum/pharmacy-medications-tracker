@@ -1,10 +1,11 @@
 class MedicationsController < ApplicationController
     before_action :find_medication, only: [:show, :edit, :update, :destroy]
-    before_action :redirect_if_not_logged_in
+    # before_action :redirect_if_not_logged_in
     
 
      def index
        @medications = Medication.order_by_name
+       @medications = Medication.search(params[:search])
      end
   
     def new
@@ -58,6 +59,7 @@ private
       params.require(:medication).permit(
         :name,
         :quantity,
+        :search,
         patient_attributes: [
           :first_name,
           :last_name,

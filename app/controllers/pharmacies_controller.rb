@@ -1,6 +1,6 @@
 class PharmaciesController < ApplicationController
     before_action :find_pharmacy, only: [:show, :edit, :update, :destroy]
-    before_action :redirect_if_not_logged_in
+    # before_action :redirect_if_not_logged_in
 
      def index
         @pharmacies = Pharmacy.all
@@ -57,7 +57,7 @@ private
   
     def pharmacy_params
       params.require(:pharmacy).permit(
-        :name, :medication_id, :patient_id,
+        :name, :medication_id, :patient_id, :search,
         medication_attributes: [
             :name,
             :quantity_dispensed,

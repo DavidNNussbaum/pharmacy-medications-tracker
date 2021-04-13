@@ -1,9 +1,9 @@
  <%= form_with(url: medications_path, method: :get) do |f| %>
-    <%= f.label :search, "Search medicationss by name" %>
+    <%= f.label :search, "Search medications by name" %>
     <%= f.text_field :search %>
     <%= f.submit "Search" %>
 <% end %>
-<%= display_list_conditionally(@medications) %>
+ 
 
 
 

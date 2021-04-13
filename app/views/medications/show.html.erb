@@ -1,6 +1,3 @@
-<%= render partial: "pharmacies/errors", locals: {object: @medication}%>
-
-
-
-
-  <%= render partial: "form" %>
+<%= @medication.name %>
+<%= @medication.pharmacy %>
+<%= @medication.prescription.current_total %>
