@@ -73,4 +73,13 @@ prescription.errors.full_messages
 
 
 <% end %>
+---------------------------------------
+<h1>Medication Status in <%= @pharmacy.name %></h1>
+<div>
+  <% @pharmacy.prescriptions.medications.order.each do |med| %>
+    <%= med.name %>
+    <%= med.prescriptions.current_total %>
+
+  <% end %>
+</div>
  

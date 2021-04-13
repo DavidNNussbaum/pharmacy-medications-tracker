@@ -1,9 +1,5 @@
-<h1>Medication Status in <%= @pharmacy.name %></h1>
-<div>
-  <% @pharmacy.prescriptions.medications.order.each do |med| %>
-    <%= med.name %>
-    <%= med.prescriptions.current_total %>
+<h1><%= @pharmacy.name</h1>
+<h1><%= @pharmacy.address</h1>
 
-  <% end %>
-</div>
+<%=  button_to "Edit", session_path(@pharmacy), method: :get %>
  

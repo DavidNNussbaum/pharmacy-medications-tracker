@@ -1,3 +1,7 @@
 <%= @medication.name %>
-<%= @medication.pharmacy %>
-<%= @medication.prescription.current_total %>
+<% @medication.pharmacies.each do |pharm| %>
+    <%= pharm.name %>
+<% end %>
+<%=# @medication.prescription.current_total %>
+
+<%= # button_to "Edit", session_path(@medication), method: :get %> 

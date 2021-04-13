@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     add_flash_types :success, :error, :warning, :info
     include ApplicationHelper
-    # helper_method :current_user, :logged_in?
+    helper_method :current_user, :logged_in?
     TODAYS_CODE = 'num'
 
     def current_user

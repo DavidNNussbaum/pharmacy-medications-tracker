@@ -1,9 +1,13 @@
 class SessionsController < ApplicationController
-    # before_action :redirect_if_not_logged_in, only: [:destroy]
+    before_action :redirect_if_not_logged_in, only: [:destroy]
   
     def new
       @user = User.new
       render :login
+    end
+
+    def homepage
+      
     end
     
     def create
@@ -20,26 +24,20 @@ class SessionsController < ApplicationController
         flash[:danger] = 'Invalid Code'
         redirect_to '/login' 
       end
-      @user = User.find_or_create_by(uid: auth['uid']) do |u|
-        u.name = auth['info']['name']
-        u.email = auth['info']['email']
-        u.image = auth['info']['image']
-      end
-  
-      session[:user_id] = @user.id
-  
-      redirect_to user
+     
     end
   
     def omniauth
       @user = User.from_omniauth(auth)
       if @user.valid?
-        session[:user_id] = @userprojects.id
+        session[:user_id] = @user.id
         redirect_to @user
       else
-        render :new
+        redirect_to root_path
       end
     end
+
+    
   
     def destroy
       session.clear

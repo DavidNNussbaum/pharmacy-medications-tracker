@@ -1,6 +1,6 @@
 class PrescriptionsController < ApplicationController
     before_action :find_prescription, only: [:show, :edit, :update, :destroy]
-    # before_action :redirect_if_not_logged_in
+    before_action :redirect_if_not_logged_in
     
 
      def index

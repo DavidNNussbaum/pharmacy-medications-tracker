@@ -11,8 +11,9 @@ class Medication < ApplicationRecord
     validates :quantity_received, presence: true
     scope :search_by_name, -> (search) {where("name LIKE ?", "#{search}%").order('name')}
 
-    def order_by_name
+    def self.order_by_name
         order('name')
     end
 
+     
 end

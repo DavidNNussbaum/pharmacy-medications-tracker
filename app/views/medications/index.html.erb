@@ -1,6 +1,6 @@
  <%= form_with(url: medications_path, method: :get) do |f| %>
     <%= f.label :search, "Search medications by name" %>
-    <%= f.text_field :search %>
+    <%= f.text_field :search, value: params[:search] %>
     <%= f.submit "Search" %>
 <% end %>
  

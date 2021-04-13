@@ -1,11 +1,13 @@
 class MedicationsController < ApplicationController
     before_action :find_medication, only: [:show, :edit, :update, :destroy]
-    # before_action :redirect_if_not_logged_in
+    before_action :redirect_if_not_logged_in
     
 
      def index
        @medications = Medication.order_by_name
-       @medications = Medication.search(params[:search])
+       if params[:search]
+        @medications = Medication.search_by_name(params[:search])
+       end
      end
   
     def new
