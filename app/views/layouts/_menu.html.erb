@@ -1,0 +1,9 @@
+<% if logged_in? %>
+ <%=  button_to "Logout", session_path(current_user), method: :delete %>
+<% else %>
+<p> You are not logged in </p>
+<% end %>
+
+<% if flash[:danger] %>
+    <p><%= flash[:danger] %></p>
+<% end %>

@@ -1,0 +1,22 @@
+<%= form_for(@user) do |f| %>
+
+  <label>User Email:</label><br>
+  <%= f.text_field :username %><br>
+
+  <label>User Password</label><br>
+  <%= f.text_field :password %><br>
+
+  <label>Code</label><br>
+  <%= f.text_field :code %><br>
+
+  <%= f.fields_for :pharmacies do |pharm| %>
+      <%= pharm.collection_check_boxes :name, Pharmacy.all, :id, :name %><br>
+      <%= pharmacies_fields.label :name, "Enter A New Pharmacy Name:" %><br>
+      <%= pharmacies_fields.text_field :name %><br>
+      <%= pharmacies_fields.label :name, "Enter A New Pharmacy Address:" %><br>
+      <%= pharmacies_fields.text_field :address %><br>
+  <% end %> 
+  <%= f.submit %>
+<% end %>
+</form>
+ 
