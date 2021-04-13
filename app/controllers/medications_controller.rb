@@ -6,14 +6,14 @@ class MedicationsController < ApplicationController
      def index
        @medications = Medication.order_by_name
      end
-
-    def show
-         
-    end
   
     def new
       @medication = Medication.new
        
+    end
+  
+    def show
+      find_medication
     end
   
     def edit
@@ -49,8 +49,10 @@ class MedicationsController < ApplicationController
 private
 
   def find_medication
-    @medication = Medication.find(params[:id])
+    # @medication = Medication.find(params[:id])
+    @medication = Medication.find_by(params[:name])
   end
+
   
     def medication_params
       params.require(:medication).permit(

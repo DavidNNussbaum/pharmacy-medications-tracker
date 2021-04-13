@@ -3,11 +3,15 @@ class PharmaciesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
      def index
-       @pharmacies = Pharmacy.order('name')
+        @pharmacies = Pharmacy.all
      end
 
     def show
          
+    end
+
+    def index
+      
     end
   
     def new

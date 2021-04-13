@@ -1,6 +1,6 @@
 div>
-  <% @pharmacies.each do |pharmacy| %>
-    <div><%= link_to pharmacy.name, pharmacy_path(pharmacy) %> 
+  <% @prescriptions.pharmacies.medications.organize each do |med| %>
+    <div><%= med.current_total %> 
 </div> 
   <% end %>
 </div>

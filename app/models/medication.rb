@@ -9,7 +9,7 @@ class Medication < ApplicationRecord
     validates :name, presence: true
     validates :quantity_dispensed, presence: true
     validates :quantity_received, presence: true
-    scope :search_by_name, -> (search) {where("name LIKE ?", "#{search}%").order('last_name')}
+    scope :search_by_name, -> (search) {where("name LIKE ?", "#{search}%").order('name')}
 
     def order_by_name
         order('name')
