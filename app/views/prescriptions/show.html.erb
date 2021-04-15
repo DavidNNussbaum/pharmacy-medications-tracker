@@ -1,6 +1,11 @@
 <h1><%= @prescription.patient.name %></h1>
 <h1><%= @prescription.medication.name %></h1>
 <h1><%= @prescription.medication.quantity_dispensed %></h1>
+<h1><%= @prescription.medication.dispensed %></h1>
 
-<%=  button_to "Edit", session_path(@prescription), method: :get %>
+ <p><%= @post.updated_at.strftime("Last updated %A, %b %e, at %l:%M %p") %></p>
+
+<%=  link_to "Edit", prescription_path(@prescription) %>
+
+<%=  button_to "Remove This Patient", patient_path(@patient), method: :delete %>
 

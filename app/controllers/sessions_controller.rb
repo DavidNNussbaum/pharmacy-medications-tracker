@@ -28,12 +28,17 @@ class SessionsController < ApplicationController
     end
   
     def omniauth
-      @user = User.from_omniauth(auth)
-      if @user.valid?
-        session[:user_id] = @user.id
-        redirect_to @user
+      if params[:code] == TODAYS_CODE
+        @user = User.from_omniauth(auth)
+        if @user.valid?
+          session[:user_id] = @user.id
+          redirect_to @user
+        else
+          redirect_to root_path
+        end
       else
-        redirect_to root_path
+        flash[:danger] = 'Invalid Code'
+        redirect_to '/welcome' 
       end
     end
 
