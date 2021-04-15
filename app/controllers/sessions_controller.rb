@@ -26,9 +26,15 @@ class SessionsController < ApplicationController
       end
      
     end
+
+    def social_media
+      if params[:code] != TODAYS_CODE
+        flash[:danger] = 'Invalid Code'
+        redirect_to '/' 
+      end
+    end
   
     def omniauth
-      if params[:code] == TODAYS_CODE
         @user = User.from_omniauth(auth)
         if @user.valid?
           session[:user_id] = @user.id
@@ -36,10 +42,6 @@ class SessionsController < ApplicationController
         else
           redirect_to root_path
         end
-      else
-        flash[:danger] = 'Invalid Code'
-        redirect_to '/welcome' 
-      end
     end
 
     

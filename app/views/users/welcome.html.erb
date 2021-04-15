@@ -1,26 +1,23 @@
- 
-<h1>Welcome To The Pharmacy Medications Tracker</h1>
-<h2>Please note that this site is for the use of managers.</h2>
-<h2>If you are not a manager, please go to our general website.</h2>
+<div class="container container-fluid">
+    <h1>Welcome To The Pharmacy Medications Tracker</h1>
+    <h2>Please note that this site is for the use of managers.</h2>
+    <h2>If you are not a manager, please go to our general website.</h2>
 
-<h2>If this is your first time on this site, please sign up here:</h2>
+    <h2>If this is your first time on this site, please sign up here:</h2>
 
-<%= link_to "Sign up", signup_path, class: "show-signup" %> 
+    <%= link_to "Sign up", signup_path, class: "show-signup" %> 
 
-<h2>If you have previously signed up, you can directly log in here:</h2>
+    <h2>If you have previously signed up, you can directly log in here:</h2>
 
-<%= link_to "Login", login_path, class: "show-login" %> 
+    <%= link_to "Login", login_path, class: "show-login" %> 
 
-<h2>You can sign up or log in using Google or Facebook here:</h2>
+    <h2> If you would like to sign up or log in using Google or Facebook, enter the correct code:</h2>
 
-<div class="third-party-login">
-          <%= label_tag :code %><br>
-          <%= text_field_tag :code %><br>
-          <%= f.submit :login %>
-          <% end %>
-    <div class="third-party-login"> 
-        <%= button_to "Log in with Google", '/auth/google_oauth2'  %>
-        <%= button_to "Log in with Facebook", '/auth/facebook'  %>
-    </div>
+    <%= form_tag('/sessions/social_media') do %>
+    <p> Enter The Code Here:</p>
+    <%= text_field_tag 'code' %>
+    <%= submit_tag 'Enter Code' %>
+    <% end %>
+</div>
 
      

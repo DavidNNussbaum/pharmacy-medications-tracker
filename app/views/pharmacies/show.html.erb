@@ -1,5 +1,13 @@
-<h1><%= @pharmacy.name</h1>
-<h1><%= @pharmacy.address</h1>
+<h1><%= @pharmacy.name %></h1>
+<h1><%= @pharmacy.address %></h1>
+
+<% @pharmacy.medications.each do |medication|%>
+<p><%= medication.name %>: <%= medication.current_total %></p>
+
+<p><%= medication.updated_at.strftime("Last updated %A, %b %e, at %l:%M %p") %></p>
+<% end %>
+ 
+
 
 <%=  link_to "Edit", pharmacy_path(@pharmacy) %>
 

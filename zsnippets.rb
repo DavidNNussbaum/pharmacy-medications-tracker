@@ -82,4 +82,10 @@ prescription.errors.full_messages
 
   <% end %>
 </div>
+--------------------------------------------
+<div class="third-party-login">
+          <%= label_tag :code %><br>
+          <%= text_field_tag :code %><br>
+          <%= f.submit :login %>
+          <% end %>
  

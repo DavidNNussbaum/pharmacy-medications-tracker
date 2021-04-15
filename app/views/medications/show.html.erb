@@ -1,9 +1,5 @@
 <%= @medication.name %>
-<% @medication.pharmacies.each do |pharm| %>
-    <%= pharm.name %>
-<% end %>
-<%=# @medication.prescription.current_total %>
 
-<%= # link_to "Edit", medication_path(@medication) %> 
+<%= link_to "Edit", medication_path(@medication) %> 
  
-<%=  button_to "Remove This Medication", medication_path(@medication), method: :delete %>
+<%= button_to "Remove This Medication", medication_path(@medication), method: :delete %>

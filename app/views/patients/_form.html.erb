@@ -1,8 +1,5 @@
 <%= form_for(@patient) do |f| %>
 
-  <label>Patient First Name:</label><br>
-  <%= f.text_field :first_name %><br>
-
   <label>Patient First Name</label><br>
   <%= f.text_field :first_name %><br>
 
@@ -10,7 +7,7 @@
   <%= f.text_field :last_name %><br>
 
   <label>Patient Date Of Birth (mm/dd/yyyy):</label><br>
-  <%= f.text_field :dob %><br>
+  <%= f.text_field :dob, value: @patient.dob&.strftime("%A, %b %e") %><br>
 
   <label>Patient Address</label><br>
   <%= f.text_field :address %><br>

@@ -1,10 +1,11 @@
 <h1><%= @patient.name %></h1> 
-<p><%= @patient.dob %></p> 
+<p><%= @patient.dob.strftime("%A, %b %e") %></p> 
 <p><%= @patient.address %></p>
-<h1><%= @patient.prescription.medication.name %></h1>
-<h1><%= @patient.prescription.medication.quantity_dispensed %></h1>
+ <% @patient.medications.each do |medication| %> 
+  <p><%= medication.name%>, <%= medication.quantity_dispensed %></p>
+ <% end %>
 
-<%=  link_to "Edit", session_path(@patient) %>
+<%=  link_to "Edit", edit_patient_path(@patient) %>
 
 <%=  button_to "Remove This Patient", patient_path(@patient), method: :delete %>
  

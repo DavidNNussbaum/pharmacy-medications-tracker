@@ -9,9 +9,13 @@
 
 <div>
   <% @patients.each do |patient| %>
-    <div><%= link_to patient.name, patient_path(patient) %> 
-    <%= patient.age %>
-    <%= patient.pharmacy.name %>
-</div> 
+    <div>
+      <%= link_to patient.name, patient_path(patient) %> 
+      <%= patient.dob.strftime("%A, %b %e") %>
+      <% patient.pharmacies.each do |pharmacy|%>
+        <%= link_to pharmacy.name, pharmacy_path(pharmacy) %>
+      <% end %>
+    </div> 
+     
   <% end %>
 </div>

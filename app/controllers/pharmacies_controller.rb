@@ -9,10 +9,6 @@ class PharmaciesController < ApplicationController
     def show
          
     end
-
-    def index
-      
-    end
   
     def new
       @pharmacy = Pharmacy.new

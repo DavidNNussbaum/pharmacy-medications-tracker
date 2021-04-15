@@ -3,7 +3,7 @@ class PatientsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
      def index
-       @patients = Patient.all.order('name')
+       @patients = Patient.all.order(:last_name)
      end
 
     def show

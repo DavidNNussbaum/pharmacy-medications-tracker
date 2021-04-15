@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   get '/auth/:provider/callback' => 'sessions#omniauth' 
   get '/sessions/homepage' => 'sessions#homepage'
+  post '/sessions/social_media' => 'sessions#social_media'
   
   resources :users, except: [:index] 
   resources :sessions

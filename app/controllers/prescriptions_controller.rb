@@ -4,7 +4,7 @@ class PrescriptionsController < ApplicationController
     
 
      def index
-       @prescriptions = Pharmacy.all
+       @prescriptions = Prescription.all
      end
 
     def show
