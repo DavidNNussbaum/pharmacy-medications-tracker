@@ -28,7 +28,8 @@ class MedicationsController < ApplicationController
       if @medication.save
             redirect_to @medication
         else  
-            render :links
+            'This Medication Is Already In Our System'
+            render :homepage
         end
     end
   

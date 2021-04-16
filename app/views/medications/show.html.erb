@@ -1,5 +1,5 @@
 <%= @medication.name %>
 
-<%= link_to "Edit", medication_path(@medication) %> 
+<%= link_to "Edit", edit_medication_path(@medication) %> 
  
 <%= button_to "Remove This Medication", medication_path(@medication), method: :delete %>

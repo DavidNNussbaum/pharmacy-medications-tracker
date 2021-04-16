@@ -1,36 +1,15 @@
 <%= form_for(@medication) do |f| %>
 
   <label>Medication Name-Strength:</label><br>
-  <%= f.collection_check_boxes :name, Medication.all, :id, :name %><br>
-    <%= f.label :name, "Create A New Medication-Strength:" %><br>
+    <%= f.label :name, "Medication-Strength:" %><br>
     <%= f.text_field :name %><br>
-    <%= f.label :quantity_dispensed, "Enter The Quantity Dispensed:" %><br>
+    <%= f.label :quantity_dispensed, "Quantity Dispensed:" %><br>
     <%= f.text_field :quantity_dispensed %><br>
-    <%= f.label :quantity_dispensed, "Enter The Quantity Received:" %><br>
+    <%= f.label :quantity_dispensed, "Quantity Received:" %><br>
     <%= f.text_field :quantity_received %><br>
 
-    <%= f.fields_for :pharmacies do |pharm| %>
-    <%= pharm.collection_check_boxes :name, Pharmacy.all, :id, :name %><br>
-    <%= pharm.label :name, "Enter A New Pharmacy Name:" %><br>
-    <%= pharm.text_field :name %><br>
-    <%= pharm.label :name, "Enter A New Pharmacy Address:" %><br>
-    <%= pharm.text_field :address %><br>
- 
-
-<%= f.fields_for :patients do |pat| %>
-    <%= pat.collection_check_boxes :name, Patient.all, :id, :name %><br>
-    <%= pat.label :first_name, "Enter A New Patient First Name:" %><br>
-    <%= pat.text_field :first_name %><br>
-    <%= pat.label :last_name, "Enter A New Patient Last Name:" %><br>
-    <%= pat.text_field :last_name %><br>
-    <%= pat.label :dob, "Enter A New Patient Date of Birth (mm/dd/yyyy):" %><br>
-    <%= pat.text_field :dob %><br>
-    <%= pat.label :address, "Enter A New Patient Address:" %><br>
-    <%= pat.text_field :address %><br>
-<% end %>
-<% end %>
-  
-    <%= f.submit "Enter the Medication"%>
+     
+    <%= f.submit "Enter the Medication Information"%>
   <% end %> 
   
   
