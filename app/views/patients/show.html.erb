@@ -1,6 +1,7 @@
 <h1><%= @patient.name %></h1> 
-<p><%= @patient.dob.strftime("%A, %b %e") %></p> 
+<p><%= @patient.dob.strftime("%m/%d/%Y") %></p> 
 <p><%= @patient.address %></p>
+<p><%= @patient.pharmacy.name %>
  <% @patient.medications.each do |medication| %> 
   <p><%= medication.name%>, <%= medication.quantity_dispensed %></p>
  <% end %>

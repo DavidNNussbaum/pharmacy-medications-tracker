@@ -6,13 +6,13 @@ class MedicationsController < ApplicationController
      def index
        @medications = Medication.order_by_name
        if params[:search]
-        @medications = Medication.search_by_name(params[:search])
+        @medications = Medication.search_by_name(params[:search]).order_by_last_name
        end
      end
   
     def new
       @medication = Medication.new
-       
+
     end
   
     def show
@@ -26,7 +26,7 @@ class MedicationsController < ApplicationController
     def create
       @medication = Medication.new(medication_params)
       if @medication.save
-            redirect_to @medication
+          redirect_to @medication
         else  
             flash[:danger] = 'This Medication Is Already In Our System'
             render 'sessions/homepage'
@@ -53,14 +53,14 @@ class MedicationsController < ApplicationController
 private
 
   def find_medication
-    @medication = Medication.find_by(params[:name])
+    @medication = Medication.find(params[:id])
   end
 
   
     def medication_params
       params.require(:medication).permit(
         :name,
-        :quantity,
+        :quantity_received,
         :search,
         patient_attributes: [
           :first_name,

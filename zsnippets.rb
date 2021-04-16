@@ -127,7 +127,24 @@ prescription.errors.full_messages
             <%= link_to 'Press to Continue', sessions_homepage_path %>
             -------------------------------------------------------
             Medication.create( name: "atorvastatin-20", quantity_dispensed:20, quantity_received: 100, pharmacy_id: 2)
-            
+
             
             
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+GOOGLE_CLIENT_ID: 'ENTER YOUR CODE HERE'
+GOOGLE_CLIENT_SECRET: 'ENTER YOUR CODE HERE'
+FACEBOOK_CLIENT_ID: 'ENTER YOUR CODE HERE'
+FACEBOOK_CLIENT_SECRET: 'ENTER YOUR CODE HERE'

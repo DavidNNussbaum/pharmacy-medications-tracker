@@ -12,5 +12,9 @@
   <body>
     <%= render 'layouts/menu' %>
     <%= yield %>
+
+    <% unless @homepage %>
+      <%=  link_to "Go The Main Page", sessions_homepage_path %>
+    <% end %>
   </body>
 </html>

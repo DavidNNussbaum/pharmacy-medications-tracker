@@ -3,7 +3,11 @@ class PharmaciesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
      def index
-        @pharmacies = Pharmacy.all
+        if params[:search] 
+          @pharmacies= Pharmacy.search_by_name(params[:search])
+        else
+          @pharmacies = Pharmacy.all
+        end
      end
 
     def show
@@ -21,6 +25,7 @@ class PharmaciesController < ApplicationController
   
     def create
       @pharmacy = Pharmacy.new(pharmacy_params)
+      @pharmacy.user = current_user
       if @pharmacy.save
             redirect_to @pharmacy 
         else  

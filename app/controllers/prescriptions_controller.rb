@@ -55,7 +55,7 @@ private
   end
   
     def prescription_params
-      params.require(:prescription).permit(
+      raw_params = params.require(:prescription).permit(
         :name, :medication_id, :patient_id, :dispensed, :search,
           medication_attributes: [
             :name,
@@ -74,5 +74,10 @@ private
             :user_id
           ]
         )
+        if raw_params[:patient_attributes] && raw_params[:patient_attributes][:dob]
+          array = raw_params[:patient_attributes][:dob].split("/")
+          raw_params[:patient_attributes][:dob] = [array[1], array[0], array[2]].join('-')
+        end
+        raw_params
     end
 end

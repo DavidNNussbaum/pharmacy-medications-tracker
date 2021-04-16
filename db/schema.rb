@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_215911) do
+ActiveRecord::Schema.define(version: 2021_04_16_220401) do
 
   create_table "medications", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "quantity_dispensed", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity_received", default: 0, null: false
@@ -47,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_215911) do
     t.boolean "dispensed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity_dispensed", default: 0, null: false
     t.index ["medication_id"], name: "index_prescriptions_on_medication_id"
     t.index ["patient_id"], name: "index_prescriptions_on_patient_id"
     t.index ["pharmacy_id"], name: "index_prescriptions_on_pharmacy_id"

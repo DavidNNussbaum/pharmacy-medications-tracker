@@ -30,7 +30,7 @@ class PatientsController < ApplicationController
   
     def update
       if @patient.update(patient_params)
-        redirect_to patienty_path(@patient)
+        redirect_to patient_path(@patient)
       else 
         render :edit
       end
@@ -52,6 +52,11 @@ private
   end
   
     def patient_params
-      params.require(:patient).permit(:first_name, :last_name, :dob, :address, :search )
+      raw_params = params.require(:patient).permit(:first_name, :last_name, :dob, :address, :search )
+      if raw_params[:dob]
+        array = raw_params[:dob].split("/")
+        raw_params[:dob] = [array[1], array[0], array[2]].join('-')
+      end
+      raw_params
     end
 end

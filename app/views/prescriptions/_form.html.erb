@@ -28,12 +28,13 @@
   <%= f.fields_for :medication, Medication.new do |med| %>
     <%= med.label :name, "Create A New Medication-Strength:" %><br>
     <%= med.text_field :name %><br>
-    <%= med.label :quantity_dispensed, "Enter The Quantity Dispensed:" %><br>
-    <%= med.text_field :quantity_dispensed %><br>
     <%= med.label :quantity_received, "Enter The Quantity Received:" %><br>
     <%= med.text_field :quantity_received %><br>
     
   <% end %>
+
+  <%= f.label :quantity_dispensed, "Enter The Quantity Dispensed:" %><br>
+  <%= f.text_field :quantity_dispensed %><br>
 
   <p>Press The Appropriate Button:</p>
     <%= f.radio_button :dispensed, true %>

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     end
 
     def homepage
-      
+      @homepage = true
     end
     
     def create

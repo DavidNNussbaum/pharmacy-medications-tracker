@@ -12,13 +12,8 @@
   <label>Patient Address</label><br>
   <%= f.text_field :address %><br>
    
-  <%= f.fields_for :pharmacies do |pharm| %>
-      <%= pharm.collection_check_boxes :name, Pharmacy.all, :id, :name %><br>
-      <%= pharm.label :name, "Enter A New Pharmacy Name:" %><br>
-      <%= pharm.text_field :name %><br>
-      <%= pharm.label :name, "Enter A New Pharmacy Address:" %><br>
-      <%= pharm.text_field :address %><br>
-  <% end %>
+  
+   
   <%= f.submit "Submit This Information"%>
 <% end %>
 </form>
