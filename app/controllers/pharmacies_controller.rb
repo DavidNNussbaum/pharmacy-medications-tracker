@@ -64,8 +64,15 @@ private
             :last_name,
             :dob,
             :address
+          ],
+          user_attributes: [
+            :first_name,
+            :last_name,
+            :password_digest,
+            :email,
+            :uid
           ]
-      )
+        )
   
     end
 end

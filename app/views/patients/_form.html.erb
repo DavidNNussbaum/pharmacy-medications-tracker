@@ -7,7 +7,7 @@
   <%= f.text_field :last_name %><br>
 
   <label>Patient Date Of Birth (mm/dd/yyyy):</label><br>
-  <%= f.text_field :dob, value: @patient.dob&.strftime("%A, %b %e") %><br>
+  <%= f.text_field :dob, value: @patient.dob&.strftime("%m/%d/%Y") %><br>
 
   <label>Patient Address</label><br>
   <%= f.text_field :address %><br>

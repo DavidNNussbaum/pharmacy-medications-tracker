@@ -28,8 +28,8 @@ class MedicationsController < ApplicationController
       if @medication.save
             redirect_to @medication
         else  
-            'This Medication Is Already In Our System'
-            render :homepage
+            flash[:danger] = 'This Medication Is Already In Our System'
+            render 'sessions/homepage'
         end
     end
   
@@ -53,7 +53,6 @@ class MedicationsController < ApplicationController
 private
 
   def find_medication
-    # @medication = Medication.find(params[:id])
     @medication = Medication.find_by(params[:name])
   end
 

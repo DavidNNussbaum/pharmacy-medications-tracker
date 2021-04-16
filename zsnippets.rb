@@ -123,6 +123,11 @@ prescription.errors.full_messages
             
               <%= f.submit "Enter the Medication"%>
             <% end %> 
+            ----------------------------------------------------
+            <%= link_to 'Press to Continue', sessions_homepage_path %>
+            -------------------------------------------------------
+            Medication.create( name: "atorvastatin-20", quantity_dispensed:20, quantity_received: 100, pharmacy_id: 2)
+            
             
             
  
