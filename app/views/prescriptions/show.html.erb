@@ -8,8 +8,7 @@
     This Prescription has not been dispensed.
     <% end %>
 </h1>
-
- <p><%= @prescription.updated_at.strftime("Last updated %A, %b %e, at %l:%M %p") %></p>
+<h1><%= @prescription.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></h1>
 
 <%=  link_to "Edit", prescription_path(@prescription) %>
 

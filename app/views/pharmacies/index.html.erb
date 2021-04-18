@@ -9,6 +9,7 @@
 <div>
   <% @pharmacies.each do |pharmacy| %>
     <div><%= link_to pharmacy.name, pharmacy_path(pharmacy) %> 
+         <%= pharmacy.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
 </div> 
   <% end %>
 </div>

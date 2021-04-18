@@ -8,7 +8,7 @@ class PrescriptionsController < ApplicationController
      end
 
     def show
-         
+      
     end
   
     def new
@@ -25,9 +25,9 @@ class PrescriptionsController < ApplicationController
     def create
       @prescription = Prescription.new(prescription_params)
       if @prescription.save
-            redirect_to @prescription
+          redirect_to @prescription
         else  
-            render :new
+          render :new
         end
     end
   
@@ -56,10 +56,9 @@ private
   
     def prescription_params
       raw_params = params.require(:prescription).permit(
-        :name, :medication_id, :patient_id, :dispensed, :search,
+        :name, :medication_id, :patient_id, :quantity_dispensed, :search, :pharmacy_id, :dispensed,
           medication_attributes: [
             :name,
-            :quantity_dispensed,
             :quantity_received
           ],
           patient_attributes: [
@@ -74,7 +73,7 @@ private
             :user_id
           ]
         )
-        if raw_params[:patient_attributes] && raw_params[:patient_attributes][:dob]
+        if raw_params[:patient_attributes] && raw_params[:patient_attributes][:dob]&.present?
           array = raw_params[:patient_attributes][:dob].split("/")
           raw_params[:patient_attributes][:dob] = [array[1], array[0], array[2]].join('-')
         end

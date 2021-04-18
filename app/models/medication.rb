@@ -13,8 +13,9 @@ class Medication < ApplicationRecord
     def self.order_by_name
         order('name')
     end
+
     def self.current_total
         quantity_received - quantity_dispensed   
     end
-     
+
 end

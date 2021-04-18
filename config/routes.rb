@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   resources :users, except: [:index] 
   resources :sessions
 
-  resources :patients, only: [:index, :new, :create]  
-  resources :prescriptions, only: [:index, :new, :create]
-  resources :medications, only: [:index, :new, :create]
+  resources :patients, only: [:index, :new, :create, :edit]  
+  resources :prescriptions, only: [:index, :new, :create, :edit]
+  resources :medications, only: [:index, :new, :create, :edit]
 
   resources :pharmacies do
     resources :patients, shallow: true   

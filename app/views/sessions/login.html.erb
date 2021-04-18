@@ -1,4 +1,5 @@
-<div id="login-form">
+<div class="container container-fluid">
+    <div id="login-form">
     <%= form_with(model: @user, url: sessions_path, method: :post, local: true) do |f| %>
         <div class="form-control">
             <%= f.label :email, class: "form-label" %>
@@ -10,7 +11,8 @@
         </div>
        
           <%= label_tag :code %><br>
-          <%= text_field_tag :code %><br>
-        <%= f.submit :login %>
+          <%= text_field_tag :code %><br><br>
+        <%= f.submit :login, class: 'btn btn-primary btn-block' %>
     <% end %>
  </div>
+<div>

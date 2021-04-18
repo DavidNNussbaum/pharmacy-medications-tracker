@@ -11,9 +11,11 @@
   <% @patients.each do |patient| %>
     <div>
       <%= link_to patient.name, patient_path(patient) %> 
-      <%= patient.dob.strftime("%A, %b %e") %>
+      <%= patient.dob.strftime("%m/%d/%Y") %>
       <% patient.pharmacies.each do |pharmacy|%>
+      <%= patient.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
         <%= link_to pharmacy.name, pharmacy_path(pharmacy) %>
+        <%= pharmacy.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
       <% end %>
     </div> 
      

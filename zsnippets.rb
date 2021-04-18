@@ -150,3 +150,9 @@ FACEBOOK_CLIENT_ID: 'ENTER YOUR CODE HERE'
 FACEBOOK_CLIENT_SECRET: 'ENTER YOUR CODE HERE'
 ---------------------------------------------------
 &.strftime("%m/%d/%Y")
+
+----------------------------------------------
+<%= link_to prescription, prescription_path(prescription.pharmacy) %>
+---------------------------------------------
+<% unless @homepage %>
+  <%=  link_to "Go The Main Page", sessions_homepage_path %>

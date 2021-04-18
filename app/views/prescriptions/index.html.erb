@@ -1,9 +1,11 @@
 <div>
   <% @prescriptions.each do |prescription| %>
-    <%= link_to prescription.pharmacy.name, pharmacy_path(prescription.pharmacy) %>
+    <%= prescription.pharmacy.name %>
     <%= prescription.patient.name%>
     <%= prescription.medication.name %>
     <%= prescription.quantity_dispensed %>
+    <%= prescription.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
+    <%= link_to prescription, prescription_path(prescription) %>
     
       
       <br>   

@@ -61,7 +61,6 @@ private
   def find_medication
     @medication = Medication.find(params[:id])
   end
-
   
     def medication_params
       params.require(:medication).permit(

@@ -1,7 +1,7 @@
 <%= form_for(@prescription) do |f| %>
 
   <h2>Choose by Birthdate or Create A Patient:</h2>
-    <%= f.collection_check_boxes :patient_id, Patient.all, :id, :dob %><br> 
+    <%= f.collection_select :patient_id, Patient.order_by_last_name, :id, :name_and_dob %><br> 
     <%= f.fields_for :patient, Patient.new do |pat| %>
       <%= pat.label :first_name, "Enter A New Patient First Name:" %><br>
       <%= pat.text_field :first_name %><br>
@@ -14,7 +14,7 @@
 <% end %>
 
   <h2>Choose or Create A Pharmacy:</h2> 
-    <%= f.collection_check_boxes :pharmacy_id, Pharmacy.all, :id, :name %><br>
+    <%= f.collection_select :pharmacy_id, Pharmacy.order_by_name, :id, :name %><br>
     <%= f.fields_for :pharmacy, Pharmacy.new do |pharm| %>
       <%= pharm.hidden_field :user_id, value: current_user.id %>
       <%= pharm.label :name, "Enter A New Pharmacy Name:" %><br>
@@ -24,7 +24,7 @@
   <% end %>
 
   <h2>Choose or Create A Medication:</h2> 
-  <%= f.collection_check_boxes :medication_id, Medication.all, :id, :name %><br>
+  <%= f.collection_select :medication_id, Medication.order_by_name, :id, :name %><br>
   <%= f.fields_for :medication, Medication.new do |med| %>
     <%= med.label :name, "Create A New Medication-Strength:" %><br>
     <%= med.text_field :name %><br>

@@ -16,4 +16,8 @@ class Patient < ApplicationRecord
     def self.order_by_last_name
         order('last_name')
     end
+
+    def name_and_dob
+        "#{name} - #{dob&.strftime("%m/%d/%Y")}"
+    end
 end

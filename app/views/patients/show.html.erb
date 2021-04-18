@@ -1,9 +1,13 @@
 <h1><%= @patient.name %></h1> 
 <p><%= @patient.dob.strftime("%m/%d/%Y") %></p> 
 <p><%= @patient.address %></p>
-<p><%= @patient.pharmacy.name %>
+ <% @patient.pharmacies.each do |pharmacy| %>
+    <p><%= pharmacy.name %></p>
+<% end %>
+<p><%= @patient.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p>
  <% @patient.medications.each do |medication| %> 
   <p><%= medication.name%>, <%= medication.quantity_dispensed %></p>
+  <p><%= medication.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p>
  <% end %>
 
 <%=  link_to "Edit", edit_patient_path(@patient) %>
