@@ -5,4 +5,8 @@ class Pharmacy < ApplicationRecord
     validates :name, presence: true, uniqueness:true
     scope :search_by_name, -> (search) {where("name LIKE ?", "#{search}%").order('name')}
 
+
+    def self.order_by_name
+        order('name')
+    end
 end

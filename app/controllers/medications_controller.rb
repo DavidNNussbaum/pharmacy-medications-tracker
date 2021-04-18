@@ -6,7 +6,13 @@ class MedicationsController < ApplicationController
      def index
        @medications = Medication.order_by_name
        if params[:search]
-        @medications = Medication.search_by_name(params[:search]).order_by_last_name
+        if @medications.include?(params[:search])
+          @medications = Medication.search_by_name(params[:search]).order_by_name
+        else
+          flash[:danger] = 'This Medication Is Not In Our System'
+        end
+      else
+        @medications = Medication.all
        end
      end
   

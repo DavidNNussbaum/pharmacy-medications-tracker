@@ -12,4 +12,8 @@ class Patient < ApplicationRecord
     def name
         "#{first_name} #{last_name}"
     end
+
+    def self.order_by_last_name
+        order('last_name')
+    end
 end

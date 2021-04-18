@@ -3,10 +3,18 @@ class PharmaciesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
      def index
+        @pharmacies = Pharmacy.all.order(:name)
         if params[:search] 
           @pharmacies= Pharmacy.search_by_name(params[:search])
+          if params[:search]
+            if @pharmaciess.include?(params[:search])
+              @pharmacies = Pharmacy.search_by_name(params[:search]).order_by_name
+            else
+              flash[:danger] = 'This Pharmacy Is Not In Our System'
+            end
         else
           @pharmacies = Pharmacy.all
+        end
         end
      end
 
