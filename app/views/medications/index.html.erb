@@ -1,18 +1,29 @@
- <%= form_with(url: medications_path, method: :get) do |f| %>
-    <%= f.label :search, "Search medications by name" %>
-    <%= f.text_field :search, value: params[:search] %>
-    <%= f.submit "Search" %>
-<% end %>
- 
-
-
-
-<div>
-  <% @medications.order('name').each_with_index do |medication, index| %>
-    <div><%= link_to medication.name, medication_path(medication) %> 
-         <%= medication.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
-</div> 
+<div class="ft-sz-25">
+  <% if @pharmacy %>
+  <p>Medications for <%= @pharmacy.name %> Pharmacy</p>
+  <% else %>
+  <p>List Of Medications</p>
   <% end %>
-</div>
-<p></p>
+  <%= form_with(url: pharmacy_medications_path(@pharmacy), method: :get) do |f| %>
+      <%= f.label :search, "Search medications by name" %>
+      <%= f.text_field :search, value: params[:search] %>
+      <%= f.submit "Search" %>
+  <% end %>
+  
+  <% if @medications.exists? %>
+    <div>
+      <% @medications.each_with_index do |medication, index| %>
+        <div>
+          <%= link_to medication.name, medication_path(medication) %> 
+          <%= medication.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
+        </div> 
+      <% end %>
+    </div>
+  <% else %>
+    <p>This medication not found.</p>
+    <% if @pharmacy %>
+      <%=  link_to "Create A New Medication For This Pharmacy", new_pharmacy_medication_path(@pharmacy) %><br>
+    <% end%>
+  <% end %>
+ </div>
 

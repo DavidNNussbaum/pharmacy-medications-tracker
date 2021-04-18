@@ -5,16 +5,9 @@ class PharmaciesController < ApplicationController
      def index
         @pharmacies = Pharmacy.all.order(:name)
         if params[:search] 
-          @pharmacies= Pharmacy.search_by_name(params[:search])
-          if params[:search]
-            if @pharmaciess.include?(params[:search])
-              @pharmacies = Pharmacy.search_by_name(params[:search]).order_by_name
-            else
-              flash[:danger] = 'This Pharmacy Is Not In Our System'
-            end
+          @pharmacies= Pharmacy.search_by_name(params[:search]).order_by_name
         else
           @pharmacies = Pharmacy.all
-        end
         end
      end
 
@@ -53,7 +46,7 @@ class PharmaciesController < ApplicationController
 
   def destroy
         if @pharmacy.destroy
-            redirect_to pharmacy_path
+            redirect_to pharmacies_path
         else
             redirect_to back
         end
@@ -66,25 +59,7 @@ private
   
     def pharmacy_params
       params.require(:pharmacy).permit(
-        :name, :medication_id, :patient_id, :search,
-        medication_attributes: [
-            :name,
-            :quantity_dispensed,
-            :quantity_received
-          ],
-          patient_attributes: [
-            :first_name,
-            :last_name,
-            :dob,
-            :address
-          ],
-          user_attributes: [
-            :first_name,
-            :last_name,
-            :password_digest,
-            :email,
-            :uid
-          ]
+        :name, :address
         )
   
     end

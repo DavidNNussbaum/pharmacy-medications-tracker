@@ -1,4 +1,5 @@
 class Medication < ApplicationRecord
+    belongs_to :pharmacy
     has_many :prescriptions,:dependent => :destroy
     has_many :patients, through: :prescriptions, :dependent => :destroy
     has_many :pharmacies, through: :prescriptions, :dependent => :destroy
@@ -14,8 +15,9 @@ class Medication < ApplicationRecord
         order('name')
     end
 
-    def self.current_total
-        quantity_received - quantity_dispensed   
+    def current_total
+        total_quantity_dispensed = prescriptions.pluck(:quantity_dispensed).compact.sum
+        quantity_received - total_quantity_dispensed   
     end
 
 end

@@ -1,16 +1,18 @@
 <h1><%= @pharmacy.name %></h1>
 <h1><%= @pharmacy.address %></h1>
 <h1><%= @pharmacy.updated_at.strftime("Last updated %A, %b %e, at %l:%M %p") %></h1>
+<div class="ft-sz-25">
+    <% @pharmacy.medications.distinct.each do |medication|%>
+    <p><%= medication.name %>: <%= medication.current_total %></p>
 
-<% @pharmacy.medications.each do |medication|%>
-<p><%= medication.name %>: <%= medication.current_total %></p>
+    <p><%= medication.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p>
+    <% end %>
+    
+    <%=  link_to "This Pharmacy's Medications", pharmacy_medications_path(@pharmacy) %><br>
 
-<p><%= medication.updated_at.Time.in_time_zone("Eastern Time (US & Canada)").("Last updated %m/%d/%Y, at %l:%M %p") %></p>
-<% end %>
- 
+    <%=  link_to "Create A New Medication For This Pharmacy", new_pharmacy_medication_path(@pharmacy) %><br>
 
+    <%=  link_to "Edit", edit_pharmacy_path(@pharmacy) %><br>
 
-<%=  link_to "Edit", pharmacy_path(@pharmacy) %>
-
-<%=  button_to "Remove This Pharmacy", pharmacy_path(@pharmacy), method: :delete %>
- 
+    <%=  button_to "Remove This Pharmacy", pharmacy_path(@pharmacy), method: :delete %>
+ </div>

@@ -1,8 +1,13 @@
-<h3>New Medication Form</h3>
-
+<% if @pharmacy %>
+  <h1>New Medication For <%= @pharmacy.name %> Pharmacy</h1>
+<% else %>
+  <h1>New Medication Form</h1>
+<% end %>
+<div class="ft-sz-25">
   <%= render partial: "layouts/errors", locals: {object: @medication}%>
 
 
 
 
   <%= render partial: "form" %>
+</div>

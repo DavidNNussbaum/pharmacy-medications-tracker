@@ -1,7 +1,12 @@
+<% if @pharmacy.name %>
+  <h1>Edit Form For <%= @pharmacy.name %></h1>
+<% else %>
+  <h1>Create A New Pharmacy</h1>
+<% end %>
 <%= form_for @pharmacy do |f| %>
-    <%= f.label :name, "List A New Pharmacy:" %><br>
+    <%= f.label :name, "Pharmacy Name:" %><br>
     <%= f.text_field :name %><br>
-    <%= f.label :address, "New Pharmacy Address:" %><br>
+    <%= f.label :address, "Pharmacy Address:" %><br>
     <%= f.text_field :address %><br>
  
     <%= f.submit %>

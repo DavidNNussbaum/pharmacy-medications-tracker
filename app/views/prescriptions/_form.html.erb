@@ -1,32 +1,32 @@
 <%= form_for(@prescription) do |f| %>
 
   <h2>Choose by Birthdate or Create A Patient:</h2>
-    <%= f.collection_select :patient_id, Patient.order_by_last_name, :id, :name_and_dob %><br> 
+    <%= f.collection_select :patient_id, Patient.order_by_last_name, :id, :name_and_dob, { prompt: true} %><br> 
     <%= f.fields_for :patient, Patient.new do |pat| %>
-      <%= pat.label :first_name, "Enter A New Patient First Name:" %><br>
+      <%= pat.label :first_name, "Enter Patient First Name:" %><br>
       <%= pat.text_field :first_name %><br>
-      <%= pat.label :last_name, "Enter A New Patient Last Name:" %><br>
+      <%= pat.label :last_name, "Enter Patient Last Name:" %><br>
       <%= pat.text_field :last_name %><br>
-      <%= pat.label :dob, "Enter A New Patient Date of Birth (mm/dd/yyyy):" %><br>
+      <%= pat.label :dob, "Enter Patient Date of Birth (mm/dd/yyyy):" %><br>
       <%= pat.text_field :dob %><br>
-      <%= pat.label :address, "Enter A New Patient Address:" %><br>
+      <%= pat.label :address, "Enter Patient Address:" %><br>
       <%= pat.text_field :address %><br>
 <% end %>
 
   <h2>Choose or Create A Pharmacy:</h2> 
-    <%= f.collection_select :pharmacy_id, Pharmacy.order_by_name, :id, :name %><br>
+    <%= f.collection_select :pharmacy_id, Pharmacy.order_by_name, :id, :name, { prompt: true } %><br>
     <%= f.fields_for :pharmacy, Pharmacy.new do |pharm| %>
       <%= pharm.hidden_field :user_id, value: current_user.id %>
-      <%= pharm.label :name, "Enter A New Pharmacy Name:" %><br>
+      <%= pharm.label :name, "Enter Pharmacy Name:" %><br>
       <%= pharm.text_field :name %><br>
-      <%= pharm.label :address, "Enter A New Pharmacy Address:" %><br>
+      <%= pharm.label :address, "Enter Pharmacy Address:" %><br>
       <%= pharm.text_field :address %><br>
   <% end %>
 
   <h2>Choose or Create A Medication:</h2> 
-  <%= f.collection_select :medication_id, Medication.order_by_name, :id, :name %><br>
+  <%= f.collection_select :medication_id, Medication.order_by_name, :id, :name, { prompt: true } %><br>
   <%= f.fields_for :medication, Medication.new do |med| %>
-    <%= med.label :name, "Create A New Medication-Strength:" %><br>
+    <%= med.label :name, "Create Medication-Strength:" %><br>
     <%= med.text_field :name %><br>
     <%= med.label :quantity_received, "Enter The Quantity Received:" %><br>
     <%= med.text_field :quantity_received %><br>

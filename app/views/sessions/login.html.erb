@@ -1,18 +1,18 @@
-<div class="container container-fluid">
+<div class="ft-sz-25">
     <div id="login-form">
     <%= form_with(model: @user, url: sessions_path, method: :post, local: true) do |f| %>
-        <div class="form-control">
+        <div class="">
             <%= f.label :email, class: "form-label" %>
             <%= f.email_field :email, class: "form-input" %>
         </div>
-        <div class="form-control">
+        <div class="">
             <%= f.label :password, class: "form-label" %>
             <%= f.password_field :password, class: "form-input" %>
         </div>
        
           <%= label_tag :code %><br>
           <%= text_field_tag :code %><br><br>
-        <%= f.submit :login, class: 'btn btn-primary btn-block' %>
+        <%= f.submit :login %>
     <% end %>
  </div>
 <div>

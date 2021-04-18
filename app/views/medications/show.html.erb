@@ -1,6 +1,14 @@
-<%= @medication.name %>
-<%= @medication.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
+<div class="ft-sz-25">
+    <%= @medication.name %>
+    <%= @medication.quantity_received %>
+    <%= @medication.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
 
-<%= link_to "Edit", edit_medication_path(@medication) %> 
- 
-<%= button_to "Remove This Medication", medication_path(@medication), method: :delete %>
+    <%= form_tag(quantity_received_current_medication_path(@medication)) do %>
+        <p> Enter The Quantity Received Here:</p>
+        <%= text_field_tag :quantity_received %>
+        <%= submit_tag 'Enter Quantity Received' %>
+        <% end %>
+
+    
+    <%= button_to "Remove This Medication", medication_path(@medication), method: :delete %>
+</div>

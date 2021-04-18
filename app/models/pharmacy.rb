@@ -1,6 +1,6 @@
 class Pharmacy < ApplicationRecord
     belongs_to :user
-    has_many :prescriptions
+    has_many :prescriptions, :dependent => :destroy
     has_many :medications, through: :prescriptions
     validates :name, presence: true, uniqueness:true
     scope :search_by_name, -> (search) {where("name LIKE ?", "#{search}%").order('name')}
@@ -18,7 +18,14 @@ class Pharmacy < ApplicationRecord
         Prescription.includes(:medication).group(:pharmacy_id, :name).count(:quantity_dispensed)
     end
 
-    def self.current_total
-        total_received - total_dispensed
+    def calc_amt_received
+        amount_received = []
+        amount_received << quantity_received
+        amount_received
     end
+
+    def self.current_total
+        calc_amt_received - total_dispensed
+    end
+    
 end

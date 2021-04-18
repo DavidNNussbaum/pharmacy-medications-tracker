@@ -10,7 +10,7 @@
 </h1>
 <h1><%= @prescription.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></h1>
 
-<%=  link_to "Edit", prescription_path(@prescription) %>
+<%=  link_to "Edit", edit_prescription_path(@prescription), class: 'ft-sz-25' %>
 
-<%=  button_to "Remove This Prescription", prescription_path(@prescription), method: :delete %>
+<%=  button_to "Remove This Prescription", prescription_path(@prescription), class: 'ft-sz-25', method: :delete %>
 

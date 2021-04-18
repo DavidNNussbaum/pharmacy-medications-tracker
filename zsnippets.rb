@@ -156,3 +156,8 @@ FACEBOOK_CLIENT_SECRET: 'ENTER YOUR CODE HERE'
 ---------------------------------------------
 <% unless @homepage %>
   <%=  link_to "Go The Main Page", sessions_homepage_path %>
+  ------------------------------------------------------
+  <% patient.pharmacies.each do |pharmacy|%>
+    <%= patient.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
+      <%= link_to pharmacy.name, pharmacy_path(pharmacy) %>
+      <%= pharmacy.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>

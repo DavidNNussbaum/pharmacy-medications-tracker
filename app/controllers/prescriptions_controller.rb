@@ -43,7 +43,7 @@ class PrescriptionsController < ApplicationController
 
   def destroy
         if @prescription.destroy
-            redirect_to prescription_path
+            redirect_to prescriptions_path
         else
             redirect_to back
         end

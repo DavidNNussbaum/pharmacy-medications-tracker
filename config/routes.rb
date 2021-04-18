@@ -5,13 +5,18 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#omniauth' 
   get '/sessions/homepage' => 'sessions#homepage'
   post '/sessions/social_media' => 'sessions#social_media'
+
   
   resources :users, except: [:index] 
   resources :sessions
 
   resources :patients, only: [:index, :new, :create, :edit]  
   resources :prescriptions, only: [:index, :new, :create, :edit]
-  resources :medications, only: [:index, :new, :create, :edit]
+  resources :medications, only: [:index, :new, :create, :edit] do
+    member do
+      post :quantity_received_current
+    end
+  end
 
   resources :pharmacies do
     resources :patients, shallow: true   

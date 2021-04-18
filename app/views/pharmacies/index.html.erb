@@ -1,16 +1,22 @@
-<%= form_with(url: pharmacies_path, method: :get) do |f| %>
-    <%= f.label :search, "Search pharmacies by name" %>
-    <%= f.text_field :search, value: params[:search] %>
-    <%= f.submit "Search" %>
-<% end %>
+<div class="ft-sz-25">
+  <%= form_with(url: pharmacies_path, method: :get) do |f| %>
+      <%= f.label :search, "Search pharmacies by name" %>
+      <%= f.text_field :search, value: params[:search] %>
+      <%= f.submit "Search" %>
+  <% end %>
 
 
-
-<div>
-  <% @pharmacies.each do |pharmacy| %>
-    <div><%= link_to pharmacy.name, pharmacy_path(pharmacy) %> 
-         <%= pharmacy.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
-</div> 
+  <% if @pharmacies.exists? %>
+    <div>
+      <% @pharmacies.each do |pharmacy| %>
+        <div>
+          <%= link_to pharmacy.name, pharmacy_path(pharmacy) %> 
+          <%= pharmacy.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
+        </div> 
+      <% end %>
+    </div>
+  <% else %>
+    <p>This Pharmacy Is Not In Our System.</p>
   <% end %>
 </div>
 

@@ -1,23 +1,24 @@
- 
+ <div class="ft-sz-25">
 
-<%= form_with(url: patients_path, method: :get) do |f| %>
-    <%= f.label :search, "Search patients by name" %>
-    <%= f.text_field :search %>
-    <%= f.submit "Search" %>
-<% end %>
- 
-
-<div>
-  <% @patients.each do |patient| %>
+  <%= form_with(url: patients_path, method: :get) do |f| %>
+      <%= f.label :search, "Search patients by name" %>
+      <%= f.text_field :search, value: params[:search] %>
+      <%= f.submit "Search" %>
+  <% end %>
+  
+  <% if @patients.exists? %>
     <div>
-      <%= link_to patient.name, patient_path(patient) %> 
-      <%= patient.dob.strftime("%m/%d/%Y") %>
-      <% patient.pharmacies.each do |pharmacy|%>
-      <%= patient.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
-        <%= link_to pharmacy.name, pharmacy_path(pharmacy) %>
-        <%= pharmacy.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
+      <% @patients.each do |patient| %>
+        <div>
+          <%= link_to patient.name, patient_path(patient) %> 
+          <%= patient.dob.strftime("%m/%d/%Y") %>
+          <%= patient.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
+          
+        </div> 
+        
       <% end %>
-    </div> 
-     
+    </div>
+  <% else %>
+    <p>This Patient Is Not In Our System.</p>
   <% end %>
 </div>

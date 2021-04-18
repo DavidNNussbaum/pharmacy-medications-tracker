@@ -5,13 +5,7 @@ class PatientsController < ApplicationController
      def index
        @patients = Patient.all.order(:last_name)
        if params[:search]
-        if @patients.include?(params[:search])
-          @patients = Patient.search_by_name(params[:search]).order_by_last_name
-        else
-          flash[:danger] = 'This Patient Is Not In Our System'
-        end
-      else
-        @patients = Patient.all
+        @patients = Patient.search_by_name(params[:search]).order_by_last_name
        end
      end
 
@@ -49,7 +43,7 @@ class PatientsController < ApplicationController
 
   def destroy
         if @patient.destroy
-            redirect_to patient_path
+            redirect_to patients_path
         else
             redirect_to back
         end

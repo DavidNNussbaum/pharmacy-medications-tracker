@@ -15,7 +15,19 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 body {
-    background: #837960 url("picture_frame.png") no-repeat;
+    background: #837960 url("frame-image.png") no-repeat;
     background-size: cover;
+}
+ .layout-container {
+     margin-top: 100px;
+
+     a {
+         color: darkblue;
+     }
+ }
+
+.ft-sz-25 {
+    font-size: 25px;
 }

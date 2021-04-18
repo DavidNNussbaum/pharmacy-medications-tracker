@@ -1,13 +1,20 @@
-<%= form_for(@medication) do |f| %>
+ <div class="ft-sz-25">
+  <%= form_for(@medication) do |f| %>
+    <% if @pharmacy %>
+      <%= f.hidden_field :pharmacy_id, value: @pharmacy.id %>
+    <% else %>
+    <p>If The Pharmacy Is Not On This List Please Go To New Pharmacy by clicking <%= link_to 'here', new_pharmacy_path %></p>
+      <%= f.label :pharmacy_id, "Pharmacy Name" %><br>
+      <%= f.collection_select :pharmacy_id, Pharmacy.order_by_name, :id, :name, { prompt: true } %><br>
+    <% end %>
+    
+      <%= f.label :name, "Medication Name -Strength:" %><br>
+      <%= f.text_field :name %><br>
+      <%= f.label :quantity_received, "Quantity Received:" %><br>
+      <%= f.text_field :quantity_received %><br>
 
-  <label>Medication Name-Strength:</label><br>
-    <%= f.label :name, "Medication-Strength:" %><br>
-    <%= f.text_field :name %><br>
-    <%= f.label :quantity_received, "Quantity Received:" %><br>
-    <%= f.text_field :quantity_received %><br>
-
-     
-    <%= f.submit "Enter the Medication Information"%>
-  <% end %> 
-  
-  
+      
+      <%= f.submit "Enter the Medication Information"%>
+    <% end %> 
+</div>
+    

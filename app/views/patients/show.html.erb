@@ -1,17 +1,18 @@
 <h1><%= @patient.name %></h1> 
-<p><%= @patient.dob.strftime("%m/%d/%Y") %></p> 
-<p><%= @patient.address %></p>
- <% @patient.pharmacies.each do |pharmacy| %>
-    <p><%= pharmacy.name %></p>
-<% end %>
-<p><%= @patient.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p>
- <% @patient.medications.each do |medication| %> 
-  <p><%= medication.name%>, <%= medication.quantity_dispensed %></p>
-  <p><%= medication.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p>
- <% end %>
+<div class="ft-sz-25">
+    <p><%= @patient.dob.strftime("%m/%d/%Y") %></p> 
+    <p><%= @patient.address %></p>
+    <% @patient.pharmacies.each do |pharmacy| %>
+        <p><%= pharmacy.name %></p>
+    <% end %>
+    <p><%= @patient.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p>
+    <% @patient.prescriptions.each do |prescription| %> 
+    <p><%= prescription.medication.name%>, <%= prescription.quantity_dispensed %></p>
+    <p><%= prescription.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p>
+    <% end %>
 
-<%=  link_to "Edit", edit_patient_path(@patient) %>
+    <%=  link_to "Edit", edit_patient_path(@patient) %>
 
-<%=  button_to "Remove This Patient", patient_path(@patient), method: :delete %>
- 
- 
+    <%=  button_to "Remove This Patient", patient_path(@patient), method: :delete %>
+</div>  
+    

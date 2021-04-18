@@ -1,11 +1,11 @@
-<div>
+<div class="ft-sz-25">
   <% @prescriptions.each do |prescription| %>
-    <%= prescription.pharmacy.name %>
-    <%= prescription.patient.name%>
-    <%= prescription.medication.name %>
-    <%= prescription.quantity_dispensed %>
-    <%= prescription.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
-    <%= link_to prescription, prescription_path(prescription) %>
+    <p>Pharmacy Name: <%= prescription.pharmacy.name %></p><br>
+    <p>Patient Name: <%= prescription.patient.name%></p><br>
+    <p>Prescription Name: <%= prescription.medication.name %></p><br>
+    <p>Prescription Quantity Dispensed: <%= prescription.quantity_dispensed %></p><br>
+    <p><%= prescription.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p><br>
+    <p><%= link_to 'Print This Prescription' , prescription_path(prescription) %>
     
       
       <br>   
