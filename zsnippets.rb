@@ -161,3 +161,23 @@ FACEBOOK_CLIENT_SECRET: 'ENTER YOUR CODE HERE'
     <%= patient.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
       <%= link_to pharmacy.name, pharmacy_path(pharmacy) %>
       <%= pharmacy.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %>
+
+      ------------------------------------------------
+      def self.total_received
+        Prescription.includes(:medication).group(:pharmacy_id, :name).count(:quantity_received)
+    end
+    
+    def self.total_dispensed
+        Prescription.includes(:medication).group(:pharmacy_id, :name).count(:quantity_dispensed)
+    end
+
+    def calc_amt_received
+        amount_received = []
+        amount_received << quantity_received
+        amount_received
+    end
+
+    def self.current_total
+        calc_amt_received - total_dispensed
+    end
+    

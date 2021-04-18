@@ -1,6 +1,6 @@
-<h1><%= @prescription.patient.name %></h1>
-<h1><%= @prescription.medication.name %></h1>
-<h1><%= @prescription.quantity_dispensed %></h1>
+<h1>Patient Name: <%= @prescription.patient.name %></h1>
+<h1>Medication Name: <%= @prescription.medication.name %></h1>
+<h1>Quantity Dispensed: <%= @prescription.quantity_dispensed %></h1>
 <h1>
     <%if @prescription.dispensed %>
     This Prescription has been dispensed.

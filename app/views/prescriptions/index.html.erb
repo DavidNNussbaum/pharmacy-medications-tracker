@@ -5,7 +5,7 @@
     <p>Prescription Name: <%= prescription.medication.name %></p><br>
     <p>Prescription Quantity Dispensed: <%= prescription.quantity_dispensed %></p><br>
     <p><%= prescription.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p><br>
-    <p><%= link_to 'Print This Prescription' , prescription_path(prescription) %>
+    <p><%= link_to 'Go To This Prescription' , prescription_path(prescription) %>
     
       
       <br>   
