@@ -1,13 +1,13 @@
 <h1>Patient Name:<%= @patient.name %></h1> 
 <div class="ft-sz-25">
-    <p><%= @patient.dob.strftime("%m/%d/%Y") %></p> 
-    <p><%= @patient.address %></p>
+    <p>Patient Date Of Birth: <%= @patient.dob.strftime("%m/%d/%Y") %></p> 
+    <p>Patient Address: <%= @patient.address %></p>
     <% @patient.pharmacies.each do |pharmacy| %>
-        <p><%= pharmacy.name %></p>
+        <p>Patient's Pharmacy: <%= pharmacy.name %></p>
     <% end %>
     <p><%= @patient.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p>
     <% @patient.prescriptions.each do |prescription| %> 
-    <p><%= prescription.medication.name%>, <%= prescription.quantity_dispensed %></p>
+    <p>Patient's Prescription: <%= prescription.medication.name%>, - Quantity Prescribed: <%= prescription.quantity_dispensed %></p>
     <p><%= prescription.updated_at.strftime("Last updated %m/%d/%Y, at %l:%M %p") %></p>
     <% end %>
 
