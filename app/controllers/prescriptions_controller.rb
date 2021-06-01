@@ -24,11 +24,16 @@ class PrescriptionsController < ApplicationController
   
     def create
       @prescription = Prescription.new(prescription_params)
+      if @prescription.pharmacy.medications.find_by(id: params[:prescription][:medication_id]).quantity_received - @prescription.quantity_dispensed < 0
+        flash[:warning] = "There is not enough of this medication present"
+        render :new
+       else
       if @prescription.save
           redirect_to @prescription
         else  
           render :new
         end
+      end
     end
   
     def update

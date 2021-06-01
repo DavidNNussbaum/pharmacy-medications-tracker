@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :patients, only: [:index, :new, :create, :edit]  
   resources :prescriptions, only: [:index, :new, :create, :edit]
   resources :medications, only: [:index, :new, :create, :edit] do
-    member do
+    member do # /medications/1/quantity_received_current with Post, and route to the quantity_received_current action of MedicationsController, with the resource id value passed in params[:id]. It will also create the quantity_received_current_medication_url and quantity_received_current_medication_path helpers. https://guides.rubyonrails.org/routing.html
       post :quantity_received_current
     end
   end

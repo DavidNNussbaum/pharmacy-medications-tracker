@@ -62,7 +62,9 @@ class MedicationsController < ApplicationController
      sum = @medication.quantity_received + params[:quantity_received].to_i
      @medication.update(quantity_received: sum)
      redirect_to @medication
+     end
   end
+
 private
 
   def find_medication
