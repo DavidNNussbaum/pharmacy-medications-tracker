@@ -11,10 +11,9 @@
 
 <%= link_to "Login", login_path, class: "show-login ft-sz-25" %> 
 
-<h2> If you would like to sign up or log in using Google or Facebook, enter the correct code:</h2>
+<h2> If you would like to sign up or log in using Google enter the correct code here:</h2>
 <div class="ft-sz-25">
     <%= form_tag('/sessions/social_media') do %>
-        <p> Enter The Code Here:</p>
         <%= text_field_tag 'code' %>
         <%= submit_tag 'Enter Code' %>
     <% end %>

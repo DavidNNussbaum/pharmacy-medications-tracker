@@ -17,7 +17,8 @@ class Medication < ApplicationRecord
 
     def current_total
         total_quantity_dispensed = prescriptions.where(pharmacy: pharmacy).pluck(:quantity_dispensed).compact.sum
-        quantity_received - total_quantity_dispensed   
+        total_quantity_received = prescriptions.where(pharmacy: pharmacy).pluck(:quantity_received).compact.sum
+        quantity_received - total_quantity_dispensed + quantity_received   
     end
 
 end
