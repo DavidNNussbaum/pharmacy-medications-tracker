@@ -1,5 +1,7 @@
 <%= form_for(@prescription) do |f| %>
 
+  <h1>A Prescription Can Be Created After The Patient, Pharmacy, And Medication Have Been Previously Created.</h1>
+
   <h2>Choose A Patient:</h2>
     <%= f.collection_select :patient_id, Patient.order_by_last_name, :id, :name_and_dob, { prompt: true} %><br> 
     
